@@ -55,6 +55,11 @@
 
   
 }
+
+.own-message img{
+    margin-right: 0 !important;
+    margin-left: 20px !important;
+}
 .text{
     font-size: 15px;
 }
