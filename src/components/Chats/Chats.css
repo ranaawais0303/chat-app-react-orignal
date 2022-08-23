@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+
     
 }
 
@@ -10,11 +11,11 @@
     /* background: var(--color-gray); */
     background-color: rgb(7, 7, 15);
     flex: 1 1 calc(50% - 4px);
-    border-radius: var(--border-radius);
+    /* border-radius: var(--border-radius); */
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
         color: white;
 
 }

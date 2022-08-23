@@ -1,0 +1,25 @@
+.nav-bar {
+    width: 100%;
+    height: 66px;
+    overflow: hidden;
+    background-color: #002766;
+    top:0;
+    /* position: fixed; */
+}
+
+.logo-tab {
+    position: absolute;
+    left: 22px;
+    top: 12px;
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+}
+
+.logout-tab {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    color: white;
+    cursor: pointer;
+}
