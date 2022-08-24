@@ -1,18 +1,10 @@
-import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
-import { auth } from "../../firebase";
-import { useAuth } from "../../context/AuthContext";
+import React from "react";
+import { Link } from "react-router-dom";
 import chatRooms from "../../data/chatRooms";
 import "./Chats.css";
-import ChatRoom from "./ChatRoom";
 import Header from "../Headers/Header";
 
 const Chats = (props) => {
-  const history = useHistory();
-
-  const { user } = useAuth();
-  console.log(user);
-
   ///////////////////////////
   return (
     <>

@@ -14,13 +14,13 @@ import "firebase/compat/auth";
 
 /////////////////////////////////////////
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyAcnBwKLnDI2whevGILskGFrjHrtD9ABGI",
-  authDomain: "chat-app-react-f2ad0.firebaseapp.com",
-  projectId: "chat-app-react-f2ad0",
-  storageBucket: "chat-app-react-f2ad0.appspot.com",
-  messagingSenderId: "705496223698",
-  appId: "1:705496223698:web:020b7a08d9ba0376ed020b",
-  measurementId: "G-WWTTNDRKQN",
+  apiKey: "AIzaSyBWbH5D6LphZ8s9Jn6NPmguKkm5QgB6B5w",
+  authDomain: "my-react-app-36b12.firebaseapp.com",
+  projectId: "my-react-app-36b12",
+  storageBucket: "my-react-app-36b12.appspot.com",
+  messagingSenderId: "208370546520",
+  appId: "1:208370546520:web:8e654943b2ad8c57e1972d",
+  measurementId: "G-712SJW7CV8",
 });
 const db = getFirestore(app);
 const auth = app.auth();
