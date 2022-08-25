@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useMessages from "../../hooks/useMessages";
 import { useAuth } from "../../context/AuthContext";
 import "./MessageList.css";
@@ -13,7 +13,9 @@ const weekday = [
 ];
 
 function MessageList({ roomId }) {
-  const containerRef = React.useRef(null);
+  const containerRef = useRef(null);
+  const messageEndRef = useRef(null);
+
   const { user } = useAuth();
   const messages = useMessages(roomId);
 
@@ -27,6 +29,12 @@ function MessageList({ roomId }) {
   //     date = weekday[messages[0].timestamp.toDate().getDay()];
   //   }
   // }, [messages]);
+  useEffect(() => {
+    if (messages.length > 0) {
+      messageEndRef.current?.scrollIntoView();
+    }
+  }, [messages]);
+
   return (
     <div className="message-list-container" ref={containerRef}>
       <ul className="message-list">
@@ -48,6 +56,7 @@ function MessageList({ roomId }) {
             />
           );
         })}
+        <div ref={messageEndRef} />
       </ul>
     </div>
   );
@@ -57,7 +66,11 @@ function Message({ message, isOwnMessage, date }) {
   const { displayName, text, photo, timestamp } = message;
   return (
     <>
-      <label className="lab"> {date !== "" ? `------${date}------` : ""}</label>
+      <label className="lab">
+        {date && date !== ""
+          ? `------${timestamp?.toDate().toDateString()}------`
+          : ""}
+      </label>
       <li className={["message", isOwnMessage && "own-message"].join(" ")}>
         <img className="img" src={photo} alt="Avatar"></img>
         <div>
@@ -65,9 +78,11 @@ function Message({ message, isOwnMessage, date }) {
           <div>
             <div className="text">{text}</div>
             <label className={isOwnMessage ? "time-left" : "time-right"}>
-              {`${timestamp?.toDate()?.getHours()}:${timestamp
-                ?.toDate()
-                ?.getMinutes()}`}
+              {timestamp
+                ? ` ${timestamp?.toDate()?.getHours()}:${timestamp
+                    ?.toDate()
+                    ?.getMinutes()}`
+                : "..."}
             </label>
           </div>
         </div>
