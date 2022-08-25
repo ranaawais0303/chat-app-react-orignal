@@ -5,6 +5,13 @@
     
 
 }
+.lab{
+
+/* justify-content: center; */
+
+display:block;
+width: 100%;
+}
 
 .message-list{
     height: 100%;

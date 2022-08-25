@@ -1,3 +1,4 @@
+import { Emoji } from "emoji-mart";
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { sendMessage } from "../../firebase";
@@ -19,6 +20,7 @@ const MessageInput = ({ roomId }) => {
 
   return (
     <form onSubmit={handleSubmit} className="message-input-container">
+      {/* <Emoji /> */}
       <input
         type="text"
         placeholder="Enter a message"
