@@ -32,8 +32,8 @@ function MessageList({ roomId }) {
       <ul className="message-list">
         {messages.map((x) => {
           let a = "";
-          if (date !== weekday[x.timestamp.toDate().getDay()]) {
-            a = weekday[x.timestamp.toDate().getDay()];
+          if (date !== weekday[x.timestamp?.toDate()?.getDay()]) {
+            a = weekday[x.timestamp?.toDate()?.getDay()];
             date = a;
           }
           return (
