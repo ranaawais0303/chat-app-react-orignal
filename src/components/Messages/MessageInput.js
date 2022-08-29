@@ -3,15 +3,15 @@ import { useAuth } from "../../context/AuthContext";
 import { sendMessage } from "../../firebase";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import Picker from "emoji-picker-react";
 import "./MessageInput.css";
-import parse from "html-react-parser";
 
 const MessageInput = ({ roomId }) => {
   ///////////////////use States////////////////
   const { user } = useAuth();
   const [value, setValue] = useState("");
   const [showEditor, setShowEditor] = useState(false);
-  const [text, setText] = useState("");
+  const [showPicker, setShowPicker] = useState(false);
 
   //////////handlers////////////////////////////
   const showEditorHandler = () => {
@@ -36,6 +36,11 @@ const MessageInput = ({ roomId }) => {
     setValue(data);
   };
 
+  const onEmojiClick = (event, emojiObject) => {
+    setValue((prevInput) => prevInput + emojiObject.emoji);
+    setShowPicker(false);
+  };
+
   ////////////////////////////////////////////
 
   //////////////////jsx/////////////////////////
@@ -54,23 +59,38 @@ const MessageInput = ({ roomId }) => {
           </div>
         )}
         {!showEditor && (
-          <input
-            type="text"
-            placeholder="Enter a message"
-            value={value}
-            onChange={handleChange}
-            className="message-input"
-            required
-            minLength={1}
-          />
+          <div className="picker-container">
+            {" "}
+            <input
+              type="text"
+              placeholder="Enter a message"
+              value={value}
+              onChange={handleChange}
+              className="input-style"
+              required
+              minLength={1}
+            />
+            <img
+              className="emoji-icon"
+              src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+              onClick={() => setShowPicker((val) => !val)}
+              alt="emoji"
+            />
+            {showPicker && (
+              <Picker
+                pickerStyle={{ width: "100%" }}
+                onEmojiClick={onEmojiClick}
+              />
+            )}
+          </div>
         )}
         <button type="submit" disabled={value < 1} className="send-message">
           Send
         </button>
+        <button className="buttonE" type="button" onClick={showEditorHandler}>
+          Editor
+        </button>
       </form>
-      <button className="buttonE" onClick={showEditorHandler}>
-        editor
-      </button>
     </div>
   );
 };
