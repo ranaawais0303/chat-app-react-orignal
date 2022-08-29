@@ -54,7 +54,7 @@ width: 100%;
 
 .own-message {
     /* display: flex; */
-    background: rgb(0, 96, 255);
+    background: rgb(70, 78, 87);
     align-self: flex-end;
     border-radius: 10px 1px 20px 10px;
     flex-direction: row-reverse;

@@ -40,11 +40,10 @@ const MessageInput = ({ roomId }) => {
 
   //////////////////jsx/////////////////////////
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit} className="message-input-container">
         {/* <Emoji /> */}
 
-        <button onClick={showEditorHandler}>editor</button>
         {showEditor && (
           <div className="app">
             <CKEditor
@@ -52,7 +51,6 @@ const MessageInput = ({ roomId }) => {
               data={value}
               onChange={changeEditorHandler}
             />
-            {parse(value)}
           </div>
         )}
         {!showEditor && (
@@ -70,7 +68,10 @@ const MessageInput = ({ roomId }) => {
           Send
         </button>
       </form>
-    </>
+      <button className="buttonE" onClick={showEditorHandler}>
+        editor
+      </button>
+    </div>
   );
 };
 export default MessageInput;
