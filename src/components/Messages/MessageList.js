@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import useMessages from "../../hooks/useMessages";
 import { useAuth } from "../../context/AuthContext";
+import parse from "html-react-parser";
+
 import "./MessageList.css";
 const weekday = [
   "Sunday",
@@ -76,7 +78,7 @@ function Message({ message, isOwnMessage, date }) {
         <div>
           <p className="sender">{isOwnMessage ? "You" : displayName}</p>
           <div>
-            <div className="text">{text}</div>
+            <div className="text">{parse(text)}</div>
             <label className={isOwnMessage ? "time-left" : "time-right"}>
               {timestamp
                 ? ` ${timestamp?.toDate()?.getHours()}:${timestamp
