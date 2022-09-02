@@ -1,4 +1,4 @@
-import React, { useState, ReactDOM } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { sendMessage } from "../../firebase";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
@@ -18,24 +18,25 @@ const MessageInput = ({ roomId }) => {
     setShowEditor(!showEditor);
   };
 
+  ///////////set Value for input///////////
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
+  ////////////send message/////////////////////
   const handleSubmit = (event) => {
     event.preventDefault();
-    // parse(value);
     if (value.length > 0) sendMessage(roomId, user, value);
     setValue("");
   };
 
+  ////////////For Editor
   const changeEditorHandler = (event, editor) => {
     const data = editor.getData();
-    // const d = parse(data);
-    console.log(data);
     setValue(data);
   };
 
+  //For Emoji ///////////////////////////
   const onEmojiClick = (event, emojiObject) => {
     setValue((prevInput) => prevInput + emojiObject.emoji);
     setShowPicker(false);
@@ -47,8 +48,6 @@ const MessageInput = ({ roomId }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="message-input-container">
-        {/* <Emoji /> */}
-
         {showEditor && (
           <div className="app">
             <CKEditor
@@ -60,7 +59,6 @@ const MessageInput = ({ roomId }) => {
         )}
         {!showEditor && (
           <div className="picker-container">
-            {" "}
             <input
               type="text"
               placeholder="Enter a message"

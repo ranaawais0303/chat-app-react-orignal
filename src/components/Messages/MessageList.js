@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import useMessages from "../../hooks/useMessages";
 import { useAuth } from "../../context/AuthContext";
 import parse from "html-react-parser";
